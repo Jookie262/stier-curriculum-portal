@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">STIEr Curriculum Portal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="term_and_year">
+        <item>1st-2020</item>
+        <item>2nd-2020</item>
+        <item>1st-2021</item>
+        <item>2nd-2021</item>
+        <item>1st-2022</item>
+        <item>2nd-2022</item>
+        <item>1st-2023</item>
+        <item>2nd-2023</item>
+        <item>1st-2024</item>
+        <item>2nd-2024</item>
+    </string-array>
+
+
+    <string-array name="program">
+        <item>BSIT</item>
+        <item>BSCpE</item>
+        <item>BSHM</item>
+        <item>BSTM</item>
+    </string-array>
 </resources>
