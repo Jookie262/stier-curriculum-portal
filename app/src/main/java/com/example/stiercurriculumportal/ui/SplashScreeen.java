@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.stiercurriculumportal.R;
+import com.example.stiercurriculumportal.ui.login.LoginActivity;
 import com.example.stiercurriculumportal.ui.signup.SignupActivity;
 
 public class SplashScreeen extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class SplashScreeen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashScreeen.this, SignupActivity.class));
+                startActivity(new Intent(SplashScreeen.this, LoginActivity.class));
                 finish();
             }
         },2000);

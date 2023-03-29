@@ -49,6 +49,16 @@ public class StudentRepository {
         }
     }
 
+    public boolean checkExistUsernamePassword(String username, String password){
+        try {
+            return new CheckExistUsernamePasswordAsync(studentDao).execute(username, password).get();
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public class InsertStudentAsync extends AsyncTask<Student, Void, Void>{
         StudentDao studentDao;
 
@@ -114,6 +124,19 @@ public class StudentRepository {
         @Override
         protected Boolean doInBackground(String... strings) {
             return studentDao.checkExistUsername(strings[0]);
+        }
+    }
+
+    public class CheckExistUsernamePasswordAsync extends AsyncTask<String, Void, Boolean>{
+        StudentDao studentDao;
+
+        public CheckExistUsernamePasswordAsync(StudentDao studentDao){
+            this.studentDao = studentDao;
+        }
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            return studentDao.checkExistUsernamePassword(strings[0], strings[1]);
         }
     }
 }

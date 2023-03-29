@@ -2,6 +2,7 @@ package com.example.stiercurriculumportal.ui.signup.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.widget.Button;
 
 import com.example.stiercurriculumportal.R;
 import com.example.stiercurriculumportal.data.model.Student;
+import com.example.stiercurriculumportal.ui.login.LoginActivity;
 import com.example.stiercurriculumportal.ui.signup.SignupViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -51,8 +53,16 @@ public class FirstSignupFragment extends Fragment {
         middle_name = view.findViewById(R.id.middle_name);
         last_name = view.findViewById(R.id.last_name);
 
-
         getStudent();
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), LoginActivity.class));
+                getActivity().finish();
+            }
+        });
+
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
