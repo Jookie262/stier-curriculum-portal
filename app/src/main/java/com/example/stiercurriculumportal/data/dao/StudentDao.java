@@ -28,4 +28,10 @@ public interface StudentDao {
 
     @Query("SELECT EXISTS(SELECT * FROM student WHERE username = :username AND password = :password)")
     boolean checkExistUsernamePassword(String username, String password);
+
+    @Query("SELECT studentId FROM student WHERE  username = :username AND password = :password")
+    int getStudentID(String username, String password);
+
+    @Query("SELECT * FROM student WHERE studentId = :id")
+    Student getOneStudent(int id);
 }

@@ -19,4 +19,9 @@ public class LoginViewModel extends AndroidViewModel {
     public boolean checkExistUsernamePassword(String username, String password){
         return studentRepository.checkExistUsernamePassword(username, password);
     }
+
+    public int getStudentID(String username, String password){
+        return studentRepository.getStudentID(username, password);
+    }
+
 }

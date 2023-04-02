@@ -49,7 +49,9 @@ public class LoginActivity extends AppCompatActivity {
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                                Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
+                                i.putExtra("Student_ID", loginViewModel.getStudentID(get_username, get_password));
+                                startActivity(i);
                                 finish();
                             }
                         });
@@ -75,6 +77,11 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+
+    private int getStudentID(String username, String password){
+        return loginViewModel.getStudentID(username, password);
     }
 
     private boolean validateInput(String user_name, String pass_word){

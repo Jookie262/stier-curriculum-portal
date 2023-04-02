@@ -17,6 +17,8 @@ public class Student {
     private String username;
     private String password;
 
+    private byte[] image;
+
     @Ignore
     private String confirmPassword;
 
@@ -32,6 +34,14 @@ public class Student {
         this.program = program;
         this.username = username;
         this.password = password;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public String getConfirmPassword() {

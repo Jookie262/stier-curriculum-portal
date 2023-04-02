@@ -29,6 +29,26 @@ public class StudentRepository {
         new DeleteStudentAsync(studentDao).execute(student);
     }
 
+    public int getStudentID(String username, String password){
+        try {
+            return new GetStudentIDAsync(studentDao).execute(username, password).get();
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Student getOneStudent(int id){
+        try {
+            return new GetOneStudentAsync(studentDao).execute(id).get();
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public boolean checkExistStudentId(int id){
         try {
             return new CheckExistStudentIdAsync(studentDao).execute(id).get();
@@ -137,6 +157,32 @@ public class StudentRepository {
         @Override
         protected Boolean doInBackground(String... strings) {
             return studentDao.checkExistUsernamePassword(strings[0], strings[1]);
+        }
+    }
+
+    public class GetOneStudentAsync extends AsyncTask<Integer, Void, Student>{
+        StudentDao studentDao;
+
+        public GetOneStudentAsync(StudentDao studentDao){
+            this.studentDao = studentDao;
+        }
+
+        @Override
+        protected Student doInBackground(Integer... integers) {
+            return studentDao.getOneStudent(integers[0]);
+        }
+    }
+
+    public class GetStudentIDAsync extends AsyncTask<String, Void, Integer>{
+        StudentDao studentDao;
+
+        public GetStudentIDAsync(StudentDao studentDao){
+            this.studentDao = studentDao;
+        }
+
+        @Override
+        protected Integer doInBackground(String... strings) {
+            return studentDao.getStudentID(strings[0], strings[1]);
         }
     }
 }

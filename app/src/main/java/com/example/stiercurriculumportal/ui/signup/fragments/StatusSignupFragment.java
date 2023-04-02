@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.stiercurriculumportal.R;
 import com.example.stiercurriculumportal.data.model.Student;
+import com.example.stiercurriculumportal.ui.login.LoginActivity;
 import com.example.stiercurriculumportal.ui.signup.SignupActivity;
 import com.example.stiercurriculumportal.ui.signup.SignupViewModel;
 
@@ -26,7 +27,6 @@ public class StatusSignupFragment extends Fragment {
     private ImageView img_status;
     private TextView txt_status, desc_status;
     private Button signup_btn, login_btn;
-
     SignupViewModel signupViewModel;
 
     public StatusSignupFragment(String STATUS, String DESCRIPTION_STATUS, Student student, SignupViewModel signupViewModel){
@@ -51,6 +51,14 @@ public class StatusSignupFragment extends Fragment {
         desc_status = view.findViewById(R.id.desc_status);
         signup_btn = view.findViewById(R.id.signup_btn);
         login_btn = view.findViewById(R.id.login_btn);
+
+        login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), LoginActivity.class));
+                getActivity().finish();
+            }
+        });
 
         if(STATUS.toUpperCase().equals("SUCCESS")){
             img_status.setImageResource(R.drawable.baseline_check_24);
